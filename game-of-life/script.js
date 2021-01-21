@@ -18,8 +18,8 @@ document.querySelector('#pause').addEventListener('click', () => isPaused = true
 document.querySelector('#resume').addEventListener('click', () => isPaused = false)
 
 document.querySelector('#random').addEventListener('click', () => {
-    for (let i = 1; i <= 100; i++) {
-        for (let j = 1; j <= 100; j++) {
+    for (let j = 1; j <= 100; j++) {
+        for (let i = 1; i <= 100; i++) {
             newStat[i][j] = Math.round(Math.random())
         }
     }
@@ -43,7 +43,7 @@ const generate = () => {
             newStat[i][j] = !prevStat[i][j] && config.birth.includes(cnt) || prevStat[i][j] && config.survive.includes(cnt)
         }
     }
-    
+
     gen += 1
 }
 
