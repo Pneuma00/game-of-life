@@ -26,9 +26,15 @@ document.querySelector('#random').addEventListener('click', () => {
 })
 
 setInterval(() => {
-    if (isPaused) return
+    if (!isPaused) generate()
 
-    // Generation
+    render()
+
+    gen += 1
+    document.querySelector('#gen').innerText = gen
+}, 100)
+
+const generate = () => {
     prevStat = newStat
 
     for (let i = 1; i <= 100; i++) {
@@ -38,15 +44,13 @@ setInterval(() => {
             newStat[i][j] = !prevStat[i][j] && config.birth.includes(cnt) || prevStat[i][j] && config.survive.includes(cnt)
         }
     }
+}
 
-    // Rendering
+const render = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     for (let i = 1; i <= 100; i++) {
         for (let j = 1; j <= 100; j++) {
             if (newStat[i][j]) ctx.fillRect((j - 1) * 5, (i - 1) * 5, 5, 5)
         }
     }
-
-    gen += 1
-    document.querySelector('#gen').innerText = gen
-}, 100)
+}
