@@ -16,5 +16,5 @@ setInterval(() => {
     })
 
     gen += 1
-    document.querySelector('#gen').value = gen
+    document.querySelector('#gen').innerText = gen
 }, 100)
