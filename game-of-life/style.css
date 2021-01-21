@@ -1,8 +1,22 @@
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 * {
-    color: #d0d0d0;
+    color: #e0e0e0;
+    font-family: 'Nanum Gothic';
 }
 
 body {
     display: flex;
     background-color: #303030;
+}
+
+button {
+    background-color: #303030;
+    border-style: solid;
+    border-color: #e0e0e0;
+}
+
+#sim {
+    border-style: solid;
+    margin-right: 5px;
 }
