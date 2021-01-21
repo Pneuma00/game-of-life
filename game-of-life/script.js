@@ -1,19 +1,51 @@
+const canvas = document.querySelector('#sim')
+const ctx = canvas.getContext('2d')
+
+ctx.fillStyle = '#e0e0e0'
+
+const dy = [-1, -1, 0, 1, 1, 1, 0, -1], dx = [0, 1, 1, 1, 0, -1, -1, -1]
+
+let config = { birth : [3], survive: [2, 3] }
+
 let gen = 0, isPaused = false
 
-let prevStat = new Array(10).fill(new Array(10).fill(0)), newStat = prevStat
+let prevStat = new Array(102).fill(new Array(102).fill(false)), newStat = prevStat
+
+// Buttons
 
 document.querySelector('#pause').addEventListener('click', () => isPaused = true)
 
 document.querySelector('#resume').addEventListener('click', () => isPaused = false)
 
+document.querySelector('#random').addEventListener('click', () => {
+    for (let i = 1; i <= 100; i++) {
+        for (let j = 1; j <= 100; j++) {
+            newStat[i][j] = Math.round(Math.random())
+        }
+    }
+})
+
 setInterval(() => {
     if (isPaused) return
 
-    prevStat.forEach((row, i) => {
-        row.forEach((cell, j) => {
-            // TODO
-        })
-    })
+    // Generation
+    prevStat = newStat
+
+    for (let i = 1; i <= 100; i++) {
+        for (let j = 1; j <= 100; j++) {
+            let cnt = 0
+            for (let key = 0; key < 8; key++) cnt += prevStat[i + dy[key]][j + dx[key]]
+            newStat[i][j] = !prevStat[i][j] && config.birth.includes(cnt) || prevStat[i][j] && config.survive.includes(cnt)
+        }
+    }
+
+    // Rendering
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    for (let i = 1; i <= 100; i++) {
+        for (let j = 1; j <= 100; j++) {
+            if (newStat[i][j]) ctx.fillRect((j - 1) * 5, (i - 1) * 5, 5, 5)
+        }
+    }
 
     gen += 1
     document.querySelector('#gen').innerText = gen
