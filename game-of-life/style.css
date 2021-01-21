@@ -1,4 +1,4 @@
-body {
+.container {
     display: flex;
     background-color: #303030;
 }
