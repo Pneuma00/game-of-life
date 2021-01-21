@@ -30,7 +30,6 @@ setInterval(() => {
 
     render()
 
-    gen += 1
     document.querySelector('#gen').innerText = gen
 }, 100)
 
@@ -44,6 +43,8 @@ const generate = () => {
             newStat[i][j] = !prevStat[i][j] && config.birth.includes(cnt) || prevStat[i][j] && config.survive.includes(cnt)
         }
     }
+    
+    gen += 1
 }
 
 const render = () => {
