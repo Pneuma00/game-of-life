@@ -8,7 +8,7 @@ const dy = [-1, -1, 0, 1, 1, 1, 0, -1], dx = [0, 1, 1, 1, 0, -1, -1, -1]
 
 let config = { birth : [3], survive: [2, 3] }
 
-let gen = 0, isPaused = false
+let gen = 0, isPaused = true
 
 let prevStat = new Array(102).fill(null).map(() => new Array(102).fill(false)), newStat = prevStat
 
