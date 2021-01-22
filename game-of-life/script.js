@@ -58,11 +58,32 @@ document.querySelector('#random').addEventListener('click', () => {
     }
 })
 
-document.querySelector('#sim').addEventListener('click', evt => {
-    let rect = canvas.getBoundingClientRect(); 
-    let x = Math.ceil((evt.clientX - rect.left) / 5), y = Math.ceil((evt.clientY - rect.top) / 5)
+let cursor = { x: 0, y: 0 }, isMouseDown = false
 
-    newStat[y][x] ^= true
+const getMousePosition = evt => {
+    let rect = canvas.getBoundingClientRect();
+    return { x: evt.clientX - rect.left, y: evt.clientY - rect.top }
+}
 
-    console.log(`Clicked cell x: ${x}, y: ${y}`)
+document.querySelector('#sim').addEventListener('mousedown', evt => {
+    isMouseDown = true
+    console.log('Mouse is down')
+})
+
+document.querySelector('#sim').addEventListener('mouseup', evt => {
+    isMouseDown = false
+    console.log('Mouse is up')
+})
+
+
+document.querySelector('#sim').addEventListener('mousemove', evt => {
+    let pos = getMousePosition(evt)
+    let x = Math.ceil(pos.x / 5), y = Math.ceil(pos.y / 5)
+
+    cursor = { x, y }
+
+    if (isMouseDown && (cursor.x !== x || cursor.y !== y)) {
+        newStat[y][x] ^= true
+        console.log(`Toggled cell at (${x}, ${y})`)
+    }
 })
