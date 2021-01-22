@@ -11,21 +11,7 @@ let gen = 0, isPaused = false
 
 let prevStat = new Array(102).fill(new Array(102).fill(false)), newStat = prevStat
 
-// Buttons
-
-document.querySelector('#pause').addEventListener('click', () => isPaused = true)
-
-document.querySelector('#resume').addEventListener('click', () => isPaused = false)
-
-document.querySelector('#step').addEventListener('click', generate)
-
-document.querySelector('#random').addEventListener('click', () => {
-    for (let j = 1; j <= 100; j++) {
-        for (let i = 1; i <= 100; i++) {
-            newStat[i][j] = !Math.round(Math.random())
-        }
-    }
-})
+// Generation
 
 setInterval(() => {
     if (!isPaused) generate()
@@ -57,3 +43,17 @@ const render = () => {
         }
     }
 }
+
+document.querySelector('#pause').addEventListener('click', () => isPaused = true)
+
+document.querySelector('#resume').addEventListener('click', () => isPaused = false)
+
+document.querySelector('#step').addEventListener('click', generate)
+
+document.querySelector('#random').addEventListener('click', () => {
+    for (let j = 1; j <= 100; j++) {
+        for (let i = 1; i <= 100; i++) {
+            newStat[i][j] = !Math.round(Math.random())
+        }
+    }
+})
