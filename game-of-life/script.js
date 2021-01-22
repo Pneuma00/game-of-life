@@ -79,6 +79,13 @@ document.querySelector('#sim').addEventListener('mouseup', evt => {
     console.log('Mouse is up')
 })
 
+document.querySelector('#sim').addEventListener('click', evt => {
+    let pos = getMousePosition(evt)
+    let x = Math.ceil(pos.x / 5), y = Math.ceil(pos.y / 5)
+    
+    newStat[y][x] ^= true
+    console.log(`Toggled cell at (${x}, ${y})`)
+})
 
 document.querySelector('#sim').addEventListener('mousemove', evt => {
     let pos = getMousePosition(evt)
