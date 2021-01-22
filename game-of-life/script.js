@@ -22,7 +22,11 @@ setInterval(() => {
 }, 100)
 
 const generate = () => {
-    prevStat = newStat
+    for (let i = 1; i <= 100; i++) {
+        for (let j = 1; j <= 100; j++) {
+            prevStat[i][j] = newStat[i][j]
+        }
+    }
 
     for (let i = 1; i <= 100; i++) {
         for (let j = 1; j <= 100; j++) {
