@@ -53,7 +53,14 @@ document.querySelector('#step').addEventListener('click', generate)
 document.querySelector('#random').addEventListener('click', () => {
     for (let i = 1; i <= 100; i++) {
         for (let j = 1; j <= 100; j++) {
-            newStat[i][j] = Math.floor(Math.random() * 100) < 50
+            newStat[i][j] = Math.floor(Math.random() * 100) < 20
         }
     }
+})
+
+document.querySelector('#sim').addEventListener('click', evt => {
+    let rect = canvas.getBoundingClientRect(); 
+    let x = evt.clientX - rect.left, y = evt.clientY - rect.top
+
+    newStat[Math.floor(y / 5)][Math.floor(x / 5)] ^= true
 })
