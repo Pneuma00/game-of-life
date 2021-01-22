@@ -25,7 +25,7 @@ const generate = () => {
     prevStat = newStat
 
     for (let i = 1; i <= 100; i++) {
-        for (let j = 1; j <= 100; j++) {
+        for (let j = 1; j <= 1; j++) {
             let cnt = 0
             for (let key = 0; key < 8; key++) cnt += prevStat[i + dy[key]][j + dx[key]]
             newStat[i][j] = !prevStat[i][j] && config.birth.includes(cnt) || prevStat[i][j] && config.survive.includes(cnt)
