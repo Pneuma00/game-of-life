@@ -52,7 +52,7 @@ document.querySelector('#step').addEventListener('click', generate)
 
 document.querySelector('#random').addEventListener('click', () => {
     for (let i = 1; i <= 100; i++) {
-        for (let j = 1; j <= 1; j++) {
+        for (let j = 1; j <= 100; j++) {
             newStat[i][j] = Math.floor(Math.random() * 100) < 50
         }
     }
