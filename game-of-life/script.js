@@ -2,6 +2,7 @@ const canvas = document.querySelector('#sim')
 const ctx = canvas.getContext('2d')
 
 ctx.fillStyle = '#e0e0e0'
+ctx.strokeStyle = '#909090'
 
 const dy = [-1, -1, 0, 1, 1, 1, 0, -1], dx = [0, 1, 1, 1, 0, -1, -1, -1]
 
@@ -42,6 +43,8 @@ const render = () => {
             if (newStat[i][j]) ctx.fillRect((j - 1) * 5, (i - 1) * 5, 5, 5)
         }
     }
+
+    ctx.strokeRect((cursor.x - 1) * 5, (cursor.y - 1) * 5, 5, 5)
 }
 
 document.querySelector('#pause').addEventListener('click', () => isPaused = true)
