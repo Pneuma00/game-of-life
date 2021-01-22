@@ -17,6 +17,8 @@ document.querySelector('#pause').addEventListener('click', () => isPaused = true
 
 document.querySelector('#resume').addEventListener('click', () => isPaused = false)
 
+document.querySelector('#step').addEventListener('click', generate)
+
 document.querySelector('#random').addEventListener('click', () => {
     for (let j = 1; j <= 100; j++) {
         for (let i = 1; i <= 100; i++) {
