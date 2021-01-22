@@ -16,11 +16,11 @@ let prevStat = new Array(102).fill(null).map(() => new Array(102).fill(false)), 
 
 setInterval(() => {
     if (!isPaused) generate()
-
-    render()
-
-    document.querySelector('#gen').innerText = gen
 }, 100)
+
+setInterval(() => {
+    render()
+}, 10)
 
 const generate = () => {
     prevStat = new Array(newStat.length).fill(null).map((_, i) => new Array(newStat[i].length).fill(null).map((_, j) => newStat[i][j]))
@@ -34,6 +34,7 @@ const generate = () => {
     }
 
     gen += 1
+    document.querySelector('#gen').innerText = gen
 }
 
 const render = () => {
