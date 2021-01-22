@@ -48,11 +48,11 @@ const render = () => {
     ctx.strokeRect((cursor.x - 1) * 5, (cursor.y - 1) * 5, 5, 5)
 }
 
-document.querySelector('#pause').addEventListener('click', () => isPaused = true)
+// Buttons
 
-document.querySelector('#resume').addEventListener('click', () => isPaused = false)
-
-document.querySelector('#step').addEventListener('click', generate)
+document.querySelector('#clear').addEventListener('click', () => {
+    newStat = new Array(102).fill(null).map(() => new Array(102).fill(false))
+})
 
 document.querySelector('#random').addEventListener('click', () => {
     for (let i = 1; i <= 100; i++) {
@@ -61,6 +61,20 @@ document.querySelector('#random').addEventListener('click', () => {
         }
     }
 })
+
+document.querySelector('#pause').addEventListener('click', () => isPaused = true)
+
+document.querySelector('#resume').addEventListener('click', () => isPaused = false)
+
+document.querySelector('#step').addEventListener('click', generate)
+
+document.querySelector('#reset').addEventListener('click', () => {
+    isPaused = true
+    gen = 0
+    newStat = new Array(102).fill(null).map(() => new Array(102).fill(false))
+})
+
+// Edit Feature
 
 let cursor = { x: 0, y: 0 }, isMouseDown = false
 
