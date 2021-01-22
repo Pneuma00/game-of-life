@@ -80,10 +80,10 @@ document.querySelector('#sim').addEventListener('mousemove', evt => {
     let pos = getMousePosition(evt)
     let x = Math.ceil(pos.x / 5), y = Math.ceil(pos.y / 5)
 
-    cursor = { x, y }
-
     if (isMouseDown && (cursor.x !== x || cursor.y !== y)) {
         newStat[y][x] ^= true
         console.log(`Toggled cell at (${x}, ${y})`)
     }
+
+    cursor = { x, y }
 })
