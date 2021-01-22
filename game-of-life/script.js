@@ -62,5 +62,5 @@ document.querySelector('#sim').addEventListener('click', evt => {
     let rect = canvas.getBoundingClientRect(); 
     let x = evt.clientX - rect.left, y = evt.clientY - rect.top
 
-    newStat[Math.floor(y / 5)][Math.floor(x / 5)] ^= true
+    newStat[Math.ceil(y / 5)][Math.ceil(x / 5)] ^= true
 })
