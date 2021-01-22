@@ -60,7 +60,9 @@ document.querySelector('#random').addEventListener('click', () => {
 
 document.querySelector('#sim').addEventListener('click', evt => {
     let rect = canvas.getBoundingClientRect(); 
-    let x = evt.clientX - rect.left, y = evt.clientY - rect.top
+    let x = Math.ceil((evt.clientX - rect.left) / 5), y = Math.ceil((evt.clientY - rect.top) / 5)
 
-    newStat[Math.ceil(y / 5)][Math.ceil(x / 5)] ^= true
+    newStat[y][x] ^= true
+
+    console.log(`Clicked cell x: ${x}, y: ${y}`)
 })
