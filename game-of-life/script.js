@@ -107,19 +107,21 @@ const getMousePosition = evt => {
 document.querySelector('#sim').addEventListener('mousedown', evt => {
     isMouseDown = true
     console.log('Mouse is down')
+    
+    let pos = getMousePosition(evt)
+    let x = Math.ceil(pos.x / 5), y = Math.ceil(pos.y / 5)
+
+    if (isMouseDown && (cursor.x !== x || cursor.y !== y)) {
+        newStat[y][x] ^= true
+        console.log(`Toggled cell at (${x}, ${y})`)
+    }
+
+    cursor = { x, y }
 })
 
 document.querySelector('#sim').addEventListener('mouseup', evt => {
     isMouseDown = false
     console.log('Mouse is up')
-})
-
-document.querySelector('#sim').addEventListener('click', evt => {
-    let pos = getMousePosition(evt)
-    let x = Math.ceil(pos.x / 5), y = Math.ceil(pos.y / 5)
-    
-    newStat[y][x] ^= true
-    console.log(`Toggled cell at (${x}, ${y})`)
 })
 
 document.querySelector('#sim').addEventListener('mousemove', evt => {
@@ -132,4 +134,10 @@ document.querySelector('#sim').addEventListener('mousemove', evt => {
     }
 
     cursor = { x, y }
+})
+
+// Keyboard UI
+
+document.addEventListener('keydown', evt => {
+    if (evt.key === ' ') isPaused = !isPaused
 })
