@@ -8,7 +8,7 @@ const dy = [-1, -1, 0, 1, 1, 1, 0, -1], dx = [0, 1, 1, 1, 0, -1, -1, -1]
 
 let config = { birth : [3], survive: [2, 3] }
 
-let gen = 0, isPaused = true, delay = 100
+let gen = 0, isPaused = true
 
 let newStat = new Array(142).fill(null).map(() => new Array(142).fill(false)), prevStat
 
@@ -17,7 +17,7 @@ let newStat = new Array(142).fill(null).map(() => new Array(142).fill(false)), p
 (async () => {
     while (true) {
         if (!isPaused) generate()
-        await new Promise(res => setTimeout(res, delay))
+        await new Promise(res => setTimeout(res, Math.pow(10, 4 - document.querySelector('#speed').value)))
     }
 })()
 
@@ -60,9 +60,7 @@ document.querySelector('#reset').addEventListener('click', () => {
     newStat = new Array(142).fill(null).map(() => new Array(142).fill(false))
 })
 
-document.querySelector('#pause').addEventListener('click', () => isPaused = true)
-
-document.querySelector('#resume').addEventListener('click', () => isPaused = false)
+document.querySelector('#pause').addEventListener('click', () => isPaused = !isPaused)
 
 document.querySelector('#step').addEventListener('click', generate)
 

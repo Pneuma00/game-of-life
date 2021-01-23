@@ -7,8 +7,9 @@
     <body>
         <canvas id="sim" width=700 height=700></canvas>
         <nav id="config">
-            <span id="gen" style="font-size: xx-large; font-style: bold;">Generation: 0</span><hr>
-            <button id="reset">Reset</button> <button id="pause">Pause</button> <button id="resume">Resume</button> <button id="step">Step</button><hr>
+            <span id="gen" style="font-size: xx-large; font-weight: bold;">Generation: 0</span><hr>
+            <button id="reset">Reset</button><hr>
+            <button id="pause">Pause / Resume</button> <button id="step">Step</button> Speed: <input id="speed" type="range" min=1 max=3 value=2><hr>
             <button id="random">Random</button> Ratio(%): <input id="randomratio" type="range" min=0 max=100 value=20><hr>
         </nav>
         <script src="script.js"></script>
