@@ -14,10 +14,10 @@ let prevStat = new Array(142).fill(null).map(() => new Array(142).fill(false)), 
 
 // Generation
 
-async () => {
+(async () => {
     if (!isPaused) generate()
     await new Promise(res => setTimeout(res, delay))
-}
+})()
 
 setInterval(() => {
     render()
