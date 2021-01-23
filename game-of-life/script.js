@@ -69,7 +69,7 @@ document.querySelector('#step').addEventListener('click', generate)
 document.querySelector('#random').addEventListener('click', () => {
     for (let i = 1; i <= 140; i++) {
         for (let j = 1; j <= 140; j++) {
-            newStat[i][j] = Math.floor(Math.random() * 10) < 2
+            newStat[i][j] = Math.floor(Math.random() * 100) < document.querySelector('#randomratio').value
         }
     }
 })
