@@ -32,7 +32,17 @@ const generate = () => {
     for (let i = 1; i <= 140; i++) {
         for (let j = 1; j <= 140; j++) {
             let cnt = 0
-            for (let key = 0; key < 8; key++) cnt += prevStat[i + dy[key]][j + dx[key]]
+            for (let key = 0; key < 8; key++) {
+                let _i = i + dy[key], _j = j + dx[key]
+
+                if (_i === 0) _i = 140
+                else if (_i === 141) _i = 1
+
+                if (_j === 0) _j = 140
+                else if (_j === 141) _j = 1
+
+                cnt += prevStat[_i][_j]
+            }
             newStat[i][j] = !prevStat[i][j] && config.birth.includes(cnt) || prevStat[i][j] && config.survive.includes(cnt)
         }
     }
