@@ -87,10 +87,10 @@ document.querySelector('#random').addEventListener('click', () => {
 
 for (let i = 0; i <= 8; i++) {
     document.querySelector('#birth').innerHTML += `<input id="b${i}" type="checkbox" ${rules.birth[i] ? 'checked' : ''}> ${i}<br>`
-    document.querySelector(`#b${i}`).addEventListener('click', () => rules.birth[i] = document.querySelector(`#b${i}`).checked)
+    document.querySelector(`#b${i}`).addEventListener('click', () => rules.birth[i] = !rules.birth[i])
 
     document.querySelector('#survive').innerHTML += `<input id="s${i}" type="checkbox" ${rules.survive[i] ? 'checked' : ''}> ${i}<br>`
-    document.querySelector(`#s${i}`).addEventListener('click', () => rules.survive[i] = document.querySelector(`#s${i}`).checked)
+    document.querySelector(`#s${i}`).addEventListener('click', () => rules.survive[i] = !rules.survive[i])
 }
 
 // Edit Feature
