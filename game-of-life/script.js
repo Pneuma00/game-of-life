@@ -10,7 +10,7 @@ let config = { birth : [3], survive: [2, 3] }
 
 let gen = 0, isPaused = true, delay = 100
 
-let prevStat = new Array(142).fill(null).map(() => new Array(142).fill(false)), newStat = prevStat
+let newStat = new Array(142).fill(null).map(() => new Array(142).fill(false)), prevStat
 
 // Generation
 
