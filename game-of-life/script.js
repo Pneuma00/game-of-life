@@ -21,7 +21,7 @@ async () => {
 
 setInterval(() => {
     render()
-    document.querySelector('#gen').innerText = gen
+    document.querySelector('#gen').innerText = 'Generation: ' + gen
 }, 10)
 
 const generate = () => {
