@@ -15,9 +15,10 @@ let newStat = new Array(142).fill(null).map(() => new Array(142).fill(false)), p
 // Generation
 
 (async () => {
-    console.log('debug')
-    if (!isPaused) generate()
-    await new Promise(res => setTimeout(res, delay))
+    while (true) {
+        if (!isPaused) generate()
+        await new Promise(res => setTimeout(res, delay))
+    }
 })()
 
 setInterval(() => {
