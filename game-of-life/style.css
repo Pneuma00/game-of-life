@@ -26,3 +26,7 @@ button {
 #rules {
     display: flex;
 }
+
+#birth {
+    margin-right: 50px
+}
