@@ -8,18 +8,20 @@ const dy = [-1, -1, 0, 1, 1, 1, 0, -1], dx = [0, 1, 1, 1, 0, -1, -1, -1]
 
 let config = { birth : [3], survive: [2, 3] }
 
-let gen = 0, isPaused = true
+let gen = 0, isPaused = true, delay = 100
 
 let prevStat = new Array(142).fill(null).map(() => new Array(142).fill(false)), newStat = prevStat
 
 // Generation
 
-setInterval(() => {
+async () => {
     if (!isPaused) generate()
-}, 100)
+    await new Promise(res => setTimeout(res, delay))
+}
 
 setInterval(() => {
     render()
+    document.querySelector('#gen').innerText = gen
 }, 10)
 
 const generate = () => {
@@ -34,7 +36,6 @@ const generate = () => {
     }
 
     gen += 1
-    document.querySelector('#gen').innerText = gen
 }
 
 const render = () => {
@@ -50,16 +51,11 @@ const render = () => {
 
 // Buttons
 
-document.querySelector('#clear').addEventListener('click', () => {
+document.querySelector('#reset').addEventListener('click', () => {
+    if (!confirm('Are you sure to reset?')) return
+    isPaused = true
+    gen = 0
     newStat = new Array(142).fill(null).map(() => new Array(142).fill(false))
-})
-
-document.querySelector('#random').addEventListener('click', () => {
-    for (let i = 1; i <= 140; i++) {
-        for (let j = 1; j <= 140; j++) {
-            newStat[i][j] = Math.floor(Math.random() * 10) < 2
-        }
-    }
 })
 
 document.querySelector('#pause').addEventListener('click', () => isPaused = true)
@@ -68,10 +64,12 @@ document.querySelector('#resume').addEventListener('click', () => isPaused = fal
 
 document.querySelector('#step').addEventListener('click', generate)
 
-document.querySelector('#reset').addEventListener('click', () => {
-    isPaused = true
-    gen = 0
-    newStat = new Array(142).fill(null).map(() => new Array(142).fill(false))
+document.querySelector('#random').addEventListener('click', () => {
+    for (let i = 1; i <= 140; i++) {
+        for (let j = 1; j <= 140; j++) {
+            newStat[i][j] = Math.floor(Math.random() * 10) < 2
+        }
+    }
 })
 
 // Edit Feature
