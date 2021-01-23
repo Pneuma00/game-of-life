@@ -86,10 +86,10 @@ document.querySelector('#random').addEventListener('click', () => {
 })
 
 for (let i = 0; i <= 8; i++) {
-    document.querySelector('#birth').innerHTML += `<input id="b${i}" type="checkbox" checked=${rules.birth[i]}> ${i}<br>`
+    document.querySelector('#birth').innerHTML += `\n<input id="b${i}" type="checkbox" checked=${rules.birth[i]}> ${i}`
     document.querySelector(`#b${i}`).addEventListener('click', () => rules.birth[i] = document.querySelector(`#b${i}`).checked)
 
-    document.querySelector('#survive').innerHTML += `<input id="s${i}" type="checkbox" checked=${rules.survive[i]}> ${i}<br>`
+    document.querySelector('#survive').innerHTML += `\n<input id="s${i}" type="checkbox" checked=${rules.survive[i]}> ${i}`
     document.querySelector(`#s${i}`).addEventListener('click', () => rules.survive[i] = document.querySelector(`#s${i}`).checked)
 }
 
