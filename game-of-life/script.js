@@ -86,17 +86,11 @@ document.querySelector('#random').addEventListener('click', () => {
 })
 
 for (let i = 0; i <= 8; i++) {
-    let birthCheckbox = document.createElement('input')
-    birthCheckbox.type = 'checkbox'
-    birthCheckbox.checked = rules.birth[i]
-    birthCheckbox.addEventListener('click', () => rules.birth[i] = birthCheckbox.checked)
-    document.querySelector('#birth').appendChild(birthCheckbox)
-    
-    let surviveCheckbox = document.createElement('input')
-    surviveCheckbox.type = 'checkbox'
-    surviveCheckbox.checked = rules.survive[i]
-    surviveCheckbox.addEventListener('click', () => rules.survive[i] = surviveCheckbox.checked)
-    document.querySelector('#survive').appendChild(surviveCheckbox)
+    document.querySelector('#birth').innerHTML += `<input id="b${i}" type="checkbox" checked=${rules.birth[i]}> ${i}<br>`
+    document.querySelector(`#b${i}`).addEventListener('click', () => rules.birth[i] = document.querySelector(`#b${i}`).checked)
+
+    document.querySelector('#survive').innerHTML += `<input id="s${i}" type="checkbox" checked=${rules.survive[i]}> ${i}<br>`
+    document.querySelector(`#s${i}`).addEventListener('click', () => rules.survive[i] = document.querySelector(`#s${i}`).checked)
 }
 
 // Edit Feature

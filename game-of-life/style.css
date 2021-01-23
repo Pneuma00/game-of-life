@@ -14,10 +14,15 @@ body {
 button {
     background-color: #303030;
     border-style: solid;
+    border-radius: 5px;
     border-color: #e0e0e0;
 }
 
 #sim {
     border-style: solid;
     margin-right: 5px;
+}
+
+#rules {
+    display: flex;
 }
