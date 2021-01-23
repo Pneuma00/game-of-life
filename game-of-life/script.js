@@ -6,7 +6,10 @@ ctx.strokeStyle = '#909090'
 
 const dy = [-1, -1, 0, 1, 1, 1, 0, -1], dx = [0, 1, 1, 1, 0, -1, -1, -1]
 
-let config = { birth : [3], survive: [2, 3] }
+let rules = {
+    birth: [ false, false, false, true, false, false, false, false, false ],
+    survive: [ false, false, true, true, false, false, false, false, false ]
+}
 
 let gen = 0, isPaused = true
 
@@ -43,7 +46,7 @@ const generate = () => {
 
                 cnt += prevStat[_i][_j]
             }
-            newStat[i][j] = !prevStat[i][j] && config.birth.includes(cnt) || prevStat[i][j] && config.survive.includes(cnt)
+            newStat[i][j] = !prevStat[i][j] && rules.birth[cnt] || prevStat[i][j] && rules.survive[cnt]
         }
     }
 
@@ -61,7 +64,7 @@ const render = () => {
     ctx.strokeRect((cursor.x - 1) * 5, (cursor.y - 1) * 5, 5, 5)
 }
 
-// Buttons
+// Dashboard
 
 document.querySelector('#reset').addEventListener('click', () => {
     if (!confirm('Are you sure to reset?')) return
@@ -81,6 +84,20 @@ document.querySelector('#random').addEventListener('click', () => {
         }
     }
 })
+
+for (let i = 0; i <= 8; i++) {
+    let birthCheckbox = document.createElement('input')
+    birthCheckbox.type = 'checkbox'
+    birthCheckbox.checked = rules.birth[i]
+    birthCheckbox.addEventListener('click', () => rules.birth[i] = birthCheckbox.checked)
+    document.querySelector('#birth').appendChild(birthCheckbox)
+    
+    let surviveCheckbox = document.createElement('input')
+    surviveCheckbox.type = 'checkbox'
+    surviveCheckbox.checked = rules.survive[i]
+    surviveCheckbox.addEventListener('click', () => rules.survive[i] = surviveCheckbox.checked)
+    document.querySelector('#survive').appendChild(surviveCheckbox)
+}
 
 // Edit Feature
 

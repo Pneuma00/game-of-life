@@ -8,9 +8,13 @@
         <canvas id="sim" width=700 height=700></canvas>
         <nav id="config">
             <span id="gen" style="font-size: xx-large; font-weight: bold;">Generation: 0</span> <button id="reset">Reset</button><hr>
-            <button id="pause">Pause / Resume</button> <button id="step">Step</button><br>
-            Speed: <input id="speed" type="range" min=10 max=30 value=20><hr>
-            <button id="random">Random</button> Ratio(%): <input id="randomratio" type="range" min=0 max=100 value=20><hr>
+            Speed: <input id="speed" type="range" min=10 max=30 value=20><br>
+            <button id="pause">Pause / Resume</button> <button id="step">Step</button><hr>
+            Random Generation
+            <button id="random">Generate</button> Alive Ratio(%): <input id="randomratio" type="range" min=0 max=100 value=20><hr>
+            Rules
+            <div id="birth">Birth: </div><br>
+            <div id="survive">Survive: </div>
         </nav>
         <script src="script.js"></script>
     </body>
