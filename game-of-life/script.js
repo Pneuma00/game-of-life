@@ -17,7 +17,7 @@ let newStat = new Array(142).fill(null).map(() => new Array(142).fill(false)), p
 (async () => {
     while (true) {
         if (!isPaused) generate()
-        await new Promise(res => setTimeout(res, Math.pow(10, 4 - document.querySelector('#speed').value)))
+        await new Promise(res => setTimeout(res, Math.pow(10, 4 - document.querySelector('#speed').value / 10)))
     }
 })()
 
