@@ -67,7 +67,7 @@ const render = () => {
 // Dashboard
 
 document.querySelector('#reset').addEventListener('click', () => {
-    if (!confirm('Are you sure to reset?')) return
+    if (!confirm('real?')) return
     isPaused = true
     gen = 0
     newStat = new Array(142).fill(null).map(() => new Array(142).fill(false))
@@ -111,11 +111,9 @@ document.querySelector('#sim').addEventListener('mousedown', evt => {
     let pos = getMousePosition(evt)
     let x = Math.ceil(pos.x / 5), y = Math.ceil(pos.y / 5)
 
-    if (isMouseDown && (cursor.x !== x || cursor.y !== y)) {
-        newStat[y][x] ^= true
-        console.log(`Toggled cell at (${x}, ${y})`)
-    }
-
+    newStat[y][x] ^= true
+    console.log(`Toggled cell at (${x}, ${y})`)
+    
     cursor = { x, y }
 })
 
